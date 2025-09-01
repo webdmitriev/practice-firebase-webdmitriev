@@ -9,16 +9,18 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
-    let service = Service()
+    private let uiBuilder = UIBuilder()
     
-    private let offset = UIBuilder.offset
+    private lazy var viewWidth: CGFloat = view.frame.width
+    
+    lazy var titleLabel: UILabel = uiBuilder.createLabel(frame: CGRect(x: 30, y: 100, width: viewWidth - 60, height: 40),
+                                                         text: "Firebase Auth", size: 22)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .cyan.withAlphaComponent(0.7)
         
-        service.createUser(for: UserData(email: "oleggio@gmail.com", password: "1234567890"))
         
         
         navigationController?.navigationBar.prefersLargeTitles = true
